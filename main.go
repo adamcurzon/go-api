@@ -1,24 +1,23 @@
 package main
 
 import (
-	"encoding/json"
 	"net/http"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Content-Type", "application/json")
+	r := gin.Default()
 
-		// Create a map to hold the response data
-		response := map[string]string{
-			"message": "Hello World",
-			"time":    time.Now().Format(time.RFC850),
-			"host":    "https://go.adamcurzon.co.uk",
-		}
-
-		json.NewEncoder(w).Encode(response)
+	r.GET("/", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"message":   "Hello World",
+			"time":      time.Now().Format(time.RFC850),
+			"host":      "https://go.adamcurzon.co.uk",
+			"framework": "gin",
+		})
 	})
 
-	http.ListenAndServe(":9990", nil)
+	r.Run(":9990")
 }

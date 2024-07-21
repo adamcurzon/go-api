@@ -16,6 +16,7 @@ func main() {
 			"time":      time.Now().Format(time.RFC850),
 			"host":      "https://go.adamcurzon.co.uk",
 			"framework": "gin",
+			"author":    "adamcurzon",
 		})
 	})
 

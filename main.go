@@ -14,7 +14,7 @@ func main() {
 		response := map[string]string{
 			"message": "Hello World",
 			"time":    time.Now().Format(time.RFC850),
-			"host":    r.Host,
+			"host":    "https://go.adamcurzon.co.uk",
 		}
 
 		json.NewEncoder(w).Encode(response)
